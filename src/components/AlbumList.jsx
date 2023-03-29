@@ -2,6 +2,13 @@ import React from "react";
 
 export default function AlbumList(props) {
   const searchResult = props.albums;
+  const searchOnlyAlbums = searchResult.filter((element => {
+    const result = []
+    if (result.filter) {
+
+    }
+    return searchOnlyAlbums
+  }));
   const renderList = searchResult.map((album) => {
     console.log(album.data);
     return (
