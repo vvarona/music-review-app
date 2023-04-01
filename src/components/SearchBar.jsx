@@ -8,7 +8,7 @@ export default function SearchBar(prop) {
         type="text"
         name="albumSearch"
         id="albumSearch"
-        placeholder="Album Name"
+        placeholder="Search for an artist"
         onChange={prop.handleChange}
         value={prop.searchValue}
       />
