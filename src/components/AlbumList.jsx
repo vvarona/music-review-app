@@ -1,21 +1,23 @@
 import React from "react";
-import { Link } from "react-router-dom";
-
+import styles from "../assets/styles/AlbumList.module.css";
+import Card from "./Card";
 
 export default function AlbumList(props) {
-  const searchResult = props.albums;
-  const renderList = searchResult.map((album) => {
-    console.log(album.data);
+  const renderList = props.albums.map((album) => {
     return (
-      <li key={album.id}>
-        <Link to={`/album/${album.id}`}>
-          <img src={`${album.cover}`} alt={`Cover of ${album.album}`}  loading="lazy"/>
-          <h3>{album.track_title}</h3>
-          <p>in {album.album_title} by {album.artist}</p>
-        </Link>
-      </li>
+      <Card
+        album={album}
+        key={album.id}
+      />
     );
   });
 
-  return <ul>{renderList}</ul>;
+  return (
+    <section className={styles.section}>
+      <h2 className={styles.title}>
+        {`${props.albums.length} ${props.title}`}
+      </h2>
+      <ul className={styles.list}>{renderList}</ul>
+    </section>
+  );
 }
