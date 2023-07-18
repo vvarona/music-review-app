@@ -1,0 +1,19 @@
+.title {
+    letter-spacing: .18rem;
+}
+
+.label {
+    visibility: hidden;
+}
+
+.textarea {
+    background-color: #2e2e2e;
+    border: 2px solid var(--light-color);
+    border-radius: 5px; 
+    color: inherit;
+    padding: 1rem;
+}
+
+.textarea:focus{
+    outline: 2px solid var(--light-color);
+}
