@@ -1,0 +1,26 @@
+.input{
+        background-color: inherit;
+        border: none;
+        border-bottom: 1.5px solid var(--light-color);
+        text-align: center;
+        font-size: 2rem;
+        color: var(--ligth-color);
+    }
+    
+.input:focus {
+    outline: none;
+    border-bottom: 5px solid var(--main-color);
+}
+
+.input:focus::placeholder{
+    opacity: 0.5;
+}
+
+.label {
+    visibility:hidden
+}
+
+.container {
+    padding: 1rem 0;
+    text-align: center;
+}
