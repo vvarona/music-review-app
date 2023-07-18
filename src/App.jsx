@@ -1,16 +1,20 @@
-import { useState } from "react";
-import SearchBar from "./components/SearchBar";
-//import AlbumCard from "./components/AlbumCard";
-import AlbumList from "./components/AlbumList";
-import Header from "./components/Header";
-import NotFound from "./components/NotFound"
+import './assets/styles/Normalize.css'
+import './assets/styles/App.css'
 
-import { Route, Routes, Link } from "react-router-dom";
+import SearchBar from "./components/SearchBar";
+import Header from "./components/Header";
+import NotFound from "./components/NotFound";
 import AlbumPage from "./components/AlbumPage";
+import ReviewPage from "./components/ReviewPage";
+
+import { useEffect, useState } from "react";
+import { Route, Routes } from "react-router-dom";
+import HomePage from './components/HomePage';
 
 function App() {
   const [search, setSearch] = useState("");
   const [searchResult, setSearchResult] = useState([]);
+  const [chartResult, setChartResult] = useState([]);
 
   const handleChange = (ev) => {
     ev.preventDefault();
@@ -21,37 +25,62 @@ function App() {
     ev.preventDefault();
     fetch("http://localhost:3003/search-album/" + search)
       .then((response) => response.json())
-      .then((data) => setSearchResult(data));
+      .then((data) => {
+        //console.log(data);
+        setSearchResult(data);
+      });
   };
 
+  const fetchChart = () => {
+    fetch("http://localhost:3003/chart-billboard")
+      .then((response) => response.json())
+      .then((data) => setChartResult(data));
+  };
+
+  useEffect(() => {
+    fetchChart();;
+  }, []);
+
   return (
-    <div className="App">
+    <>
       <Header />
       <SearchBar
-          handleChange={handleChange}
-          searchValue={search}
-          handleSubmit={handleSubmit}
-        />
-        <AlbumList
-          albums={searchResult}
-        />
+        handleChange={handleChange}
+        searchValue={search}
+        handleSubmit={handleSubmit}
+      />
+
       <Routes>
-        <Route path="/" element={<h1>This is the home</h1>}
-        />
+        <Route 
+          path="/" 
+          element={
+            <HomePage
+              searchResult={searchResult}
+              chartResult={chartResult}
+            />
+          }/>
         <Route
           path="/album/:albumID"
-          element={<AlbumPage albums={searchResult}/>}
+          element={
+            <ReviewPage />}
         />
         <Route
           path="/my-reviews"
           element={<h1>This page is for my reviews</h1>}
         />
-        <Route path='*' element={<NotFound />}/>
+        <Route 
+          path="/album-page" 
+          element={<ReviewPage />} />
+        <Route 
+          path="*" 
+          element={<NotFound />} />
       </Routes>
+
+
       <footer className="footer">
         <p>footer</p>
       </footer>
-    </div>
+    </>
   );
 }
 
