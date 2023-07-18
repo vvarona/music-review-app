@@ -1,0 +1,41 @@
+.card {
+    list-style: none;
+}
+
+.card__img {
+    inline-size: 100%;
+    object-fit: cover;
+    border-radius: 2px
+}
+
+.card > a {
+    display: grid;
+    grid-template-rows: min-content;
+    place-items: center;
+
+    text-decoration: none;
+    text-align: center;
+    color: var(--light-color);
+    
+    padding: .75rem;
+    border-radius: 10px;
+    border: .1px solid rgb(75, 75, 75);
+    background-color: #242526;
+    
+    filter: drop-shadow(3px 3px 5px  #2d2d30);
+    transition: ease-out 200ms;
+    cursor: pointer;
+    
+    scroll-snap-align: start;
+}
+
+
+.title_album{
+    display: block;
+    font-weight: 700;
+    margin-bottom: .5rem;
+}
+
+.title{
+    font-weight: 200;
+}
