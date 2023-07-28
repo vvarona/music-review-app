@@ -1,11 +1,25 @@
+:root{
+    --grayscale-filter: 1;
+    --scale-img: 1;
+    --shadow: 3px 3px 5px  #2d2d30;
+}
+
 .card {
     list-style: none;
+}
+
+.card:hover {
+    --grayscale-filter: 0;
+    --shadow: 1px 1px 10px rgba(255, 255, 255, 0.2)
 }
 
 .card__img {
     inline-size: 100%;
     object-fit: cover;
-    border-radius: 2px
+    border-radius: 2px;
+    filter: grayscale(var(--grayscale-filter));
+    transition: all 500ms ease-out;
+    
 }
 
 .card > a {
@@ -22,7 +36,7 @@
     border: .1px solid rgb(75, 75, 75);
     background-color: #242526;
     
-    filter: drop-shadow(3px 3px 5px  #2d2d30);
+    filter: drop-shadow(var(--shadow));
     transition: ease-out 200ms;
     cursor: pointer;
     
