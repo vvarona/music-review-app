@@ -10,6 +10,7 @@ import ReviewPage from "./components/ReviewPage";
 import { useEffect, useState } from "react";
 import { Route, Routes } from "react-router-dom";
 import HomePage from './components/HomePage';
+import ButtonRotate from './components/ButtonRotate';
 
 function App() {
   const [search, setSearch] = useState("");
@@ -49,6 +50,9 @@ function App() {
         searchValue={search}
         handleSubmit={handleSubmit}
       />
+
+      <ButtonRotate
+      text={"button"}/>
 
       <Routes>
         <Route 
