@@ -1,0 +1,22 @@
+.textAcross  {
+    animation: rigthToLeft 10s infinite linear;
+    font-size: 15rem;
+    font-weight: bold;
+    padding: 0 5rem;
+}
+
+.container{
+    white-space: nowrap;
+    overflow: hidden;
+    display: flex;
+}
+
+@keyframes rigthToLeft {
+    from{
+        transform: translateX(0%);
+    }
+    
+    to{
+        transform: translateX(-100%);
+    }
+}
